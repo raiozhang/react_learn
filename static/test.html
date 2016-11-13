@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style type="text/css">
+        .bro {
+            height: 158px;
+            border: 10px solid #0000AA;
+            position: relative;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .con {
+            overflow: scroll;
+            height: 200px;
+            width: 200px;
+            border: 10px solid #006600;
+            padding: 5px;
+            margin: 0 auto;
+            /*position: relative;*/
+
+        }
+
+        .box {
+            border: 6px solid #000000;
+            height: 1000px;
+            width: 2000px;
+        }
+    </style>
+</head>
+<body>
+<div class="con" id="con">
+
+    <div class="bro">
+
+    </div>
+    <div class="box" id="box">
+        wo shi box
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    var $con = document.querySelector('#con'), $box = document.querySelector('#box');
+
+    var _scroll = function () {
+        console.log($box.clientTop);
+        console.log($box.offsetTop);//元素的边框的外边缘距离与已定位的父容器（offsetparent）的上边距离（不包括元素的边框和父容器的边框）
+        console.log($box.scrollTop);
+    };
+    window.onload = function () {
+
+        $con.scrollTop = 1000;
+        console.log(window.getComputedStyle($con).height);
+        console.log($con.offsetHeight);//height 加上 padding border
+        console.log($con.scrollHeight);
+        console.log($con.clientHeight);//height 除去 padding border 横向滚动条的高度
+        $con.addEventListener('scroll', _scroll, false);
+
+    }
+</script>
+</html>
